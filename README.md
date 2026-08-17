@@ -36,3 +36,12 @@ python main.py --api          # Start REST server
 | SC-03 | API Security | Protect FastAPI endpoints | Input validation + rate limiting on REST API | Planned |
 | SC-04 | Key Management | RSA key handling | Keys generated/stored with appropriate permissions, never logged | In progress |
 | SC-05 | Secrets Hygiene | No hardcoded secrets in repo | Secret scanning (e.g. Gitleaks) in CI | Planned |
+
+## Risk Register
+
+| Risk ID | Description | Likelihood | Impact | Mitigation | Status |
+|---|---|---|---|---|---|
+| RR-01 | User mistakes classic ciphers (Caesar/Vigenere/OTP) for production-grade security | High | Medium | Clear README warning; UI label marking them "educational only" | Open |
+| RR-02 | RSA keys generated with insufficient key size or weak randomness | Low | High | Enforce minimum key size (2048+), use OS CSPRNG | Open |
+| RR-03 | FastAPI endpoints exposed without auth/rate limiting in a public deployment | Medium | Medium | Add API key/auth + rate limiting before any public exposure | Open |
+| RR-04 | Secrets (keys, test credentials) accidentally committed to repo | Low | High | Add Gitleaks/secret scanning to CI | Open |
