@@ -26,3 +26,13 @@ pip install -r requirements.txt
 python main.py                # Launch GUI
 # or
 python main.py --api          # Start REST server
+
+## Security Controls
+
+| Control ID | Category | Description | Implementation | Status |
+|---|---|---|---|---|
+| SC-01 | Cryptographic Implementation | Modern algorithm correctness | SHA-256 hashing and RSA implemented via vetted libraries | Implemented |
+| SC-02 | Educational Boundary | Classic ciphers clearly marked non-secure | README/docs flag Caesar/Vigenere/OTP as educational only | Implemented |
+| SC-03 | API Security | Protect FastAPI endpoints | Input validation + rate limiting on REST API | Planned |
+| SC-04 | Key Management | RSA key handling | Keys generated/stored with appropriate permissions, never logged | In progress |
+| SC-05 | Secrets Hygiene | No hardcoded secrets in repo | Secret scanning (e.g. Gitleaks) in CI | Planned |
